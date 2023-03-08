@@ -13,6 +13,8 @@
 }
 
 html, body {
+
+  background-color: #cde7f9;
   /* verwijder marge tussen canvas en rand van window
    */ 
   margin: 0px;
