@@ -18,3 +18,18 @@ https://emmauscollege.github.io/informatica/game/
 - icon <br>
         http://www.iconarchive.com/show/android-lollipop-icons-by-dtafalonso/Play-Games-icon.html
 - ...
+
+
+
+stappenplan
+
+1. speler laten bewegen
+2. vijanden zetten (treinen)
+3. omgeving maken
+4. speler desgin
+5. extra bewegingen (rollen, springen etc.)
+6. punten + levens
+7. munten (power up)
+8. extra hindernissen
+9. vijanden tekenen
+10. extra leven pakken (bonus)
