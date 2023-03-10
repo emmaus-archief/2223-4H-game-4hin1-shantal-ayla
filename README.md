@@ -33,3 +33,5 @@ stappenplan
 8. extra hindernissen
 9. vijanden tekenen
 10. extra leven pakken (bonus)
+11. 
+hele mooie extra stap
