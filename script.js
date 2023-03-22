@@ -48,6 +48,20 @@ if (keyIsDown(KEY_RIGHT)) {
    spelerY = spelerY+1;
  }
   
+  if (keyIsDown(RIGHT_ARROW)) {
+  spelerX = spelerX + 1;
+}
+  if (keyIsDown(LEFT_ARROW)) {
+  spelerX = spelerX - 1;
+}
+
+if (keyIsDown(DOWN_ARROW)) {
+  spelerY = spelerY + 1;
+}
+if (keyIsDown(UP_ARROW)) {
+  spelerY = spelerY - 1;
+}
+
   // vijand
 
   // kogel
