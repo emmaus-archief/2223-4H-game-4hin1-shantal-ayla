@@ -25,7 +25,8 @@ const KEY_DOWN = 40;
 
 var spelerX = 600; // x-positie van speler
 var spelerY = 600; // y-positie van speler
-
+var vijandX = 300; // x-positie van vijand
+var vijandY = 200; // y-positie van vijand
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -61,6 +62,10 @@ if (keyIsDown(KEY_RIGHT)) {
  */
 var verwerkBotsing = function() {
   // botsing speler tegen vijand
+  if (spelerX === vijandX &&
+     spelerY === vijandY) {
+    console.log("Botsing");
+     }
 
   // botsing kogel tegen vijand
 
@@ -73,9 +78,15 @@ var verwerkBotsing = function() {
  */
 var tekenAlles = function() {
   // achtergrond
-fill("blue");
-  rect(0,0,1280,720);
+fill('blue');
+  rect(0,0, width, height);
+  
   // vijand
+  
+  fill("red");
+  rect(vijandX - 25, vijandY - 25, 50, 50);
+  fill("black");
+  ellipse(vijandX, vijandY, 10, 10);
 
   // kogel
 
