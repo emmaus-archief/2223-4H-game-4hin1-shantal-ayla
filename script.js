@@ -63,7 +63,8 @@ if (keyIsDown(KEY_RIGHT)) {
 var verwerkBotsing = function() {
   // botsing speler tegen vijand
   if (spelerX === vijandX &&
-     spelerY === vijandY) {
+     spelerY - vijandY <50 &&
+     spelerY - vijandY) {
     console.log("Botsing");
      }
 
