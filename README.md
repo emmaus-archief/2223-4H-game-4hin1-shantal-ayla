@@ -24,12 +24,12 @@ https://emmauscollege.github.io/informatica/game/
 stappenplan
 
 1. speler laten bewegen
-2. vijanden zetten (treinen)
+2. vijanden zetten (bom)
 3. omgeving maken
 4. speler desgin
 5. extra bewegingen (rollen, springen etc.)
 6. punten + levens
-7. munten (power up)
+7. fruit (power up)
 8. extra hindernissen
 9. vijanden tekenen
 10. extra leven pakken (bonus)
