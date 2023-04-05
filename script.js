@@ -24,7 +24,6 @@ const KEY_RIGHT = 39;
 const KEY_UP = 38;
 const KEY_DOWN = 40;
 
-
 var spelerX = 600; // x-positie van speler
 var spelerY = 600; // y-positie van speler
 var vijandX = 600; // x-positie van vijand
@@ -109,13 +108,12 @@ fill('blue');
  * anders return false
  */
 var checkGameOver = function() {
-  if (spelerX - vijandX < 50 &&
-     spelerX - vijandX >-50 &&
-     spelerY - vijandY <50 &&
-     spelerY - vijandY > -50) {
-     aantal = aantal + 1;
-    console.log("Botsing"+ aantal)
-    return true;
+  if(spelerX - vijandX < 50 &&
+     vijandX - spelerX < 50 &&
+     spelerY - vijandY < 50 &&
+     vijandY - spelerY < 50) {
+    aantal = aantal + 1;
+    console.log ("botsing"+ aantal)
      }
   // check of HP 0 is , of tijd op is, of ...
   return false;
@@ -151,18 +149,14 @@ function draw() {
     if (checkGameOver()) {
       spelStatus = GAMEOVER;
     }
-    console.log("spelen");
   }
-  
-if (spelStatus === GAMEOVER) {
+  if (spelStatus === GAMEOVER) {
     // teken game-over scherm
-  console.log("game over");
-}
-  
+
+  }
   if (spelStatus === UITLEG) {
     // teken uitleg scherm
-    console.log("uitleg");
-  }
+
 }
 
-// aantal niet gedefineerd
+}
