@@ -28,6 +28,8 @@ var spelerX = 600; // x-positie van speler
 var spelerY = 600; // y-positie van speler
 var vijandX = 600; // x-positie van vijand
 var vijandY = 500; // y-positie van vijand
+
+var img; //plaatje
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -90,6 +92,8 @@ fill('blue');
   rect(vijandX - 25, vijandY - 25, 50, 50);
   fill("black");
   ellipse(vijandX, vijandY, 10, 10);
+  image(img, 0, 0);
+
 
   // kogel
 
@@ -122,6 +126,16 @@ var checkGameOver = function() {
 /* ********************************************* */
 /* setup() en draw() functies / hoofdprogramma   */
 /* ********************************************* */
+
+/** 
+* preload
+* deze functie wordt 1x uitgevoerd voor setup
+* we  laden hier de plaatjes
+*/
+
+function preload() {
+  img = loadImage('pacman.png');
+}
 
 /**
  * setup
