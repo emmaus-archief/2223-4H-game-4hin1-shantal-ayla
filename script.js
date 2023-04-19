@@ -30,6 +30,8 @@ var vijandX = 600; // x-positie van vijand
 var vijandY = 500; // y-positie van vijand
 
 var img; //plaatje
+var imghaai; //plaatje
+var imgachter; //plaatje
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -85,16 +87,18 @@ var tekenAlles = function() {
   // achtergrond
 fill('blue');
   rect(0,0, width, height);
+    image (imgachter, 0, 0, 600, 600);
   
   // vijand
+  image(img, vijandX-25, vijandY-25, 65, 65);
+
+
+
+
+    
+
+
   
-  fill("red");
-  rect(vijandX - 25, vijandY - 25, 50, 50);
-  fill("black");
-  ellipse(vijandX, vijandY, 10, 10);
-  image(img, 0, 0);
-
-
   // kogel
 
   // speler
@@ -102,7 +106,7 @@ fill('blue');
   rect(spelerX - 25, spelerY - 25, 50, 50);
   fill("black");
   ellipse(spelerX, spelerY, 10, 10);
-
+  image (imghaai, spelerX-25, spelerY-25, 65, 65);
   // punten en health
 
 };
@@ -134,12 +138,14 @@ var checkGameOver = function() {
 */
 
 function preload() {
-  img = loadImage('pacman.png');
+  img = loadImage('bom.png');
+  imghaai = loadImage('haai.png');
+    imgachter = loadImage('achtergrond.jpeg');
 }
 
 /**
  * setup
- * de code in deze functie wordt één keer uitgevoerd door
+ * de code in deze functie wordt een keer uitgevoerd door
  * de p5 library, zodra het spel geladen is in de browser
  */
 function setup() {

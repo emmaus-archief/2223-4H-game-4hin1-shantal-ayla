@@ -13,7 +13,8 @@
 }
 
 html, body {
-
+  
+  background-image: url("achtergrond.jpg");
   background-color: #cde7f9;
   /* verwijder marge tussen canvas en rand van window
    */ 
