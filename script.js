@@ -35,6 +35,7 @@ var vijand2X = 700; // x-positie van vijand2
 var vijand2Y = 190; // y-positie van vijand2
 var visX = 700; // x-positie van vis
 var visY = 190; // y-positie van vis
+var score = 0; // aantal punten
 
 var img; //plaatje
 var imghaai; //plaatje
@@ -77,7 +78,15 @@ var verwerkBotsing = function() {
   // botsing kogel tegen vijand
 
   // update punten en health
-
+function addPoints(points){
+  score+= points;
+}
+  function displayScore(){
+    console.log("Score:" + score);
+  }
+  //Voorbeeldgebruik:
+  addPoints(1);
+  displayScore();
 };
 
 /**
@@ -117,7 +126,7 @@ var tekenAlles = function() {
   ellipse(spelerX, spelerY, 10, 10);
   image(imghaai, spelerX - 100, spelerY - 100, 200, 200);
   // punten en health
-
+  text(score, 600,100);
 };
 
 /**
@@ -165,10 +174,10 @@ var checkGameOver = function() {
 */
 
 function preload() {
-  img = loadImage('bom.png');
-  imghaai = loadImage('haai.png');
-  imgvis = loadImage('vis.png');
-  imgachter = loadImage('achtergrond.jpeg');
+ img = loadImage('bom.png');
+ imghaai = loadImage('haai.png');
+ imgvis = loadImage('vis.png');
+ imgachter = loadImage('achtergrond.jpeg');
 
 }
 
