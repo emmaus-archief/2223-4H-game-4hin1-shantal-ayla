@@ -33,14 +33,14 @@ var vijandX = 600; // x-positie van vijand
 var vijandY = 500; // y-positie van vijand
 var vijand2X = 700; // x-positie van vijand2
 var vijand2Y = 190; // y-positie van vijand2
-var visX = 700; // x-positie van vis
-var visY = 190; // y-positie van vis
+var muntX = 700; // x-positie van vis
+var muntY = 190; // y-positie van vis
 var score = 0; // aantal punten
 
 var img; //plaatje
-var imghaai; //plaatje
+var imgmeisje; //plaatje
 var imgachter; //plaatje
-var imgvis; //plaatje
+var imgmunt; //plaatje
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -53,6 +53,9 @@ var beweegAlles = function() {
   // speler
   if (keyIsDown(KEY_RIGHT)) {
     spelerX = spelerX + 2;
+  }
+  if (keyIsDown(KEY_LEFT)) {
+    spelerX = spelerX - 2;
   }
   if (keyIsDown(KEY_UP)) {
     spelerY = spelerY - 2;
@@ -112,19 +115,19 @@ var tekenAlles = function() {
   ellipse(vijand2X, vijand2Y, 10, 10);
   image(img, vijand2X - 37, vijand2Y - 60, 110, 110);
 
-  // vis
+  // munt
   fill("blue");
-  rect(visX - 25, visY - 25, 50, 50);
+  rect(muntX - 25, muntY - 25, 50, 50);
   fill("black");
-  ellipse(visX, visY, 10, 10);
-  image(imgvis, visX - 37, visY - 60, 110, 110);
+  ellipse(muntX, muntY, 10, 10);
+  image(imgmunt, muntX - 37, muntY - 60, 110, 110);
 
   // speler
   fill("white");
   rect(spelerX - 25, spelerY - 25, 50, 50);
   fill("black");
   ellipse(spelerX, spelerY, 10, 10);
-  image(imghaai, spelerX - 100, spelerY - 100, 200, 200);
+  image(imgmeisje, spelerX - 100, spelerY - 100, 200, 200);
   // punten en health
   text(score, 600,100);
 };
@@ -150,10 +153,10 @@ var checkGameOver = function() {
     console.log("botsing" + aantal)
     return true;
   }
-  if (spelerX - visX < 130 &&
-    visX - spelerX < 130 &&
-    spelerY - visY < 130 &&
-    visY - visY < 130) {
+  if (spelerX - muntX < 130 &&
+    muntX - spelerX < 130 &&
+    spelerY - muntY < 130 &&
+    muntY - muntY < 130) {
     aantal = aantal + 1;
     console.log("botsing" + aantal)
     return true;
@@ -175,9 +178,9 @@ var checkGameOver = function() {
 
 function preload() {
  img = loadImage('bom.png');
- imghaai = loadImage('haai.png');
- imgvis = loadImage('vis.png');
- imgachter = loadImage('achtergrond.jpeg');
+ imgmeisje = loadImage('meisje.png');
+ imgmunt = loadImage('munt.png');
+ imgachter = loadImage('achtergrond2.jpeg');
 
 }
 
