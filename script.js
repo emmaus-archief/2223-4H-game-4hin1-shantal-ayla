@@ -15,6 +15,7 @@
 /* ********************************************* */
 /* globale variabelen die je gebruikt in je game */
 /* ********************************************* */
+const KEY_SPACE = 32;
 var aantal = 0;
 
 const SPELEN = 1;
@@ -27,20 +28,33 @@ const KEY_RIGHT = 39;
 const KEY_UP = 38;
 const KEY_DOWN = 40;
 
+var vloerY = 100;
+
 var spelerX = 100; // x-positie van speler
 var spelerY = 410; // y-positie van speler
+var spelerY = vloerY;
+
 var vijandX = 350; // x-positie van vijand
-var vijandY = 480; // y-positie van vijand
-var vijand2X = 700; // x-positie van vijand2
+var vijandY = 410; // y-positie van vijand
+var vijand2X = 800; // x-positie van vijand2
 var vijand2Y = 190; // y-positie van vijand2
-var muntX = 600; // x-positie van vis
-var muntY = 190; // y-positie van vis
+var muntX = 600; // x-positie van munt
+var muntY = 190; // y-positie van munt
+var wolkX = 600; // x-positie van wolk
+var wolkY = 100; // y-positie van wolk
+
 var score = 0; // aantal punten
 
+var spelerSpringt = false;
+var springSnelheid = 0;
+var springSnelheidStart = 5;
+var zwaartekracht = 0.4;
+
 var img; //plaatje
-var imgmeisje; //plaatje
+var imgbird; //plaatje
 var imgachter; //plaatje
 var imgmunt; //plaatje
+var imgwolk; //plaatje
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -57,12 +71,19 @@ var beweegAlles = function() {
   if (keyIsDown(KEY_LEFT)) {
     spelerX = spelerX - 2;
   }
-  if (keyIsDown(KEY_UP)) {
-    spelerY = spelerY - 2;
+  
+  if (keyIsDown(KEY_SPACE)) {
+    spelerSpringt = true;
+    springSnelheid = springSnelheidStart;
   }
-  if (keyIsDown(KEY_DOWN)) {
-    spelerY = spelerY + 2;
+  if (spelerSpringt === true) {
+    spelerY = spelerY - springSnelheid;
+    springSnelheid = springSnelheid - zwaartekracht;
   }
+  if (spelerY > 610) {
+    spelerSpringt = false;
+  }
+  
 
 
   // vijand
@@ -82,14 +103,14 @@ var verwerkBotsing = function() {
 
   // update punten en health
 function addPoints(points){
-  score+= points;
+  score = 1;
 }
   function displayScore(){
     console.log("Score:" + score);
   }
   //Voorbeeldgebruik:
   addPoints(1);
-  displayScore();
+  displayScore(0);
 };
 
 /**
@@ -101,24 +122,20 @@ var tekenAlles = function() {
   rect(0, 0, width, height);
   image(imgachter, 0, 0, 1280, 720);
 
+  // wolk
+  image(imgwolk, wolkX, wolkY, 200, 200);
+
   // vijand bom
-  
-  image(img, vijandX - 10, vijandY - 50, 110, 110);
+  image(img, vijandX, vijandY, 110, 110);
 
   // vijand 2
-  
   image(img, vijand2X, vijand2Y, 110, 110);
 
   // munt
-  
-  image(imgmunt, muntX - 70, muntY - 65, 120, 120);
+  image(imgmunt, muntX, muntY, 120, 120);
 
   // speler
-  fill("white");
-  rect(spelerX, spelerY, 50, 50);
-  fill("black");
-  ellipse(spelerX, spelerY, 10, 10);
-  image(imgmeisje, spelerX - 98, spelerY - 65, 200, 200);
+  image(imgbird, spelerX - 98, spelerY - 65, 200, 200);
   // punten en health
   text(score, 600,100);
 };
@@ -161,9 +178,10 @@ var checkGameOver = function() {
 
 function preload() {
  img = loadImage('bom.png');
- imgmeisje = loadImage('meisje.png');
+ imgbird = loadImage('bird3.png');
  imgmunt = loadImage('munt.gif');
- imgachter = loadImage('achtergrond2.jpeg');
+ imgwolk = loadImage('wolk.png');
+ imgachter = loadImage('bg2.webp');
 
 }
 
