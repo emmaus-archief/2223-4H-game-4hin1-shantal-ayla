@@ -40,6 +40,8 @@ var vijand2X = 800; // x-positie van vijand2
 var vijand2Y = 190; // y-positie van vijand2
 var muntX = 600; // x-positie van munt
 var muntY = 190; // y-positie van munt
+var munt2X = 900; // x-positie van munt
+var munt2Y = 410; // y-positie van munt
 var wolkX = 600; // x-positie van wolk
 var wolkY = 100; // y-positie van wolk
 
@@ -55,6 +57,9 @@ var imgbird; //plaatje
 var imgachter; //plaatje
 var imgmunt; //plaatje
 var imgwolk; //plaatje
+var imggameover; //plaatje
+var imguitleg; //plaatje
+
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -84,11 +89,9 @@ var beweegAlles = function() {
     spelerSpringt = false;
   }
   
-
-
   // vijand
 
-  // kogel
+  
 };
 
 /**
@@ -103,7 +106,7 @@ var verwerkBotsing = function() {
 
   // update punten en health
 function addPoints(points){
-  score = 1;
+  score = 0;
 }
   function displayScore(){
     console.log("Score:" + score);
@@ -133,6 +136,7 @@ var tekenAlles = function() {
 
   // munt
   image(imgmunt, muntX, muntY, 120, 120);
+  image(imgmunt, munt2X, munt2Y, 120, 120);
 
   // speler
   image(imgbird, spelerX - 98, spelerY - 65, 200, 200);
@@ -145,10 +149,10 @@ var tekenAlles = function() {
  * anders return false
  */
 var checkGameOver = function() {
-  if (spelerX - vijandX < 48 &&
-    vijandX - spelerX < 48 &&
-    spelerY - vijandY < 150 &&
-    vijandY - spelerY < 150) {
+  if (spelerX - vijandX < 50 &&
+    vijandX - spelerX < 50 &&
+    spelerY - vijandY < 50 &&
+    vijandY - spelerY < 50) {
     aantal = aantal + 1;
     console.log("botsing" + aantal)
     return true;
@@ -182,6 +186,8 @@ function preload() {
  imgmunt = loadImage('munt.gif');
  imgwolk = loadImage('wolk.png');
  imgachter = loadImage('bg2.webp');
+ imggameover = loadImage('gameover2.png');
+ imguitleg = loadImage('flappybirdj3png.png');
 
 }
 
@@ -217,9 +223,7 @@ function draw() {
   if (spelStatus === GAMEOVER) {
     // teken game-over scherm
     console.log("game over");
-    textSize(50);
-    fill("white");
-    text("game over, druk spatie om opnieuw te spelen", 100, 100);
+    image(imggameover, 0, 0, 1280, 720);
     if (keyIsDown(32)) { //spatie
       spelStatus = UITLEG;
     }
@@ -227,11 +231,8 @@ function draw() {
   if (spelStatus === UITLEG) {
     // teken uitleg scherm
     console.log("uitleg");
-    textSize(50);
-    fill("blue");
-    rect(0, 0, 1280, 720);
-    fill("white");
-    text("uitleg: Vermijd de bommen en pak de munten! \nDruk op enter om te beginnen.", 50, 350);
+    image(imguitleg, 0, 0, 1280, 720);
+    
     if (keyIsDown(13)) { // enter
       spelerX = 100;
       spelerY = 410;
