@@ -347,6 +347,7 @@ function draw() {
       spelStatus = UITLEG;
     }
   }
+  
   if (spelStatus === UITLEG) {
     // teken uitleg scherm
     console.log("uitleg");
@@ -355,6 +356,13 @@ function draw() {
     if (keyIsDown(13)) { // enter
       spelerX = 100;
       spelerY = 410;
+      muntX = 600; // x-positie van munt
+      muntY = 190; // y-positie van munt
+      munt2X = 900; // x-positie van munt 2
+      munt2Y = 410; // y-positie van munt 2
+      munt3X = 400; // x-positie van munt 3
+      munt3Y = 510; // y-positie van munt 3
+      coins = 0;
       spelStatus = SPELEN;
     }
   }
