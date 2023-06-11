@@ -185,36 +185,36 @@ var tekenAlles = function() {
  * anders return false
  */
 var checkGameOver = function() {
-  if (spelerX - vijandX < 80 &&
-    vijandX - spelerX < 80 &&
-    spelerY - vijandY < 80 &&
-    vijandY - spelerY < 80) {
+  if (spelerX - vijandX < 100 &&
+    spelerX - vijandX > -100 &&
+    spelerY - vijandY < 100 &&
+    spelerY - vijandY > -100) {
     aantal = aantal + 1;
     console.log("botsing" + aantal)
     return true;
   }
-  if (spelerX - vijand2X < 80 &&
-    vijand2X - spelerX < 80 &&
-    spelerY - vijand2Y < 80 &&
-    vijand2Y - spelerY < 80) {
-    aantal = aantal + 1;
-    console.log("botsing" + aantal)
-    return true;
-  }
-
-  if (spelerX - vijand3X < 80 &&
-    vijand3X - spelerX < 80 &&
-    spelerY - vijand3Y < 80 &&
-    vijand3Y - spelerY < 80) {
+  if (spelerX - vijand2X < 100 &&
+    spelerX - vijand2X > -100 &&
+    spelerY - vijand2Y < 100 &&
+    spelerY - vijand2Y > -100) {
     aantal = aantal + 1;
     console.log("botsing" + aantal)
     return true;
   }
 
-  if (spelerX - vijand4X < 80 &&
-    vijand4X - spelerX < 80 &&
-    spelerY - vijand4Y < 80 &&
-    vijand4Y - spelerY < 80) {
+  if (spelerX - vijand3X < 100 &&
+    spelerX - vijand3X > -100 &&
+    spelerY - vijand3Y < 100 &&
+    spelerY - vijand3Y > -100) {
+    aantal = aantal + 1;
+    console.log("botsing" + aantal)
+    return true;
+  }
+
+  if (spelerX - vijand4X < 100 &&
+    spelerX - vijand4X > -100 &&
+    spelerY - vijand4Y < 100 &&
+    spelerY - vijand4Y > -100) {
     aantal = aantal + 1;
     console.log("botsing" + aantal)
     return true;
