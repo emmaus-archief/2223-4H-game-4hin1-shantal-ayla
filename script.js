@@ -41,12 +41,19 @@ var vijand2X = 800; // x-positie van vijand2
 var vijand2Y = 190; // y-positie van vijand2
 var vijand3X = 200; // x-positie van vijand2
 var vijand3Y = 600; // y-positie van vijand2
+var vijand4X = 700; // x-positie van vijand2
+var vijand4Y = 600; // y-positie van vijand2
+
 var muntX = 600; // x-positie van munt
 var muntY = 190; // y-positie van munt
-var munt2X = 900; // x-positie van munt
-var munt2Y = 410; // y-positie van munt
+var munt2X = 900; // x-positie van munt 2
+var munt2Y = 410; // y-positie van munt 2
+var munt3X = 400; // x-positie van munt 3
+var munt3Y = 510; // y-positie van munt 3
+
 var wolkX = 600; // x-positie van wolk
 var wolkY = 100; // y-positie van wolk
+
 var vlagX = 1100; // x-positie van vlag
 var vlagY = 550; // y-positie van vlag
 
@@ -142,10 +149,16 @@ var tekenAlles = function() {
   image(img, vijand2X, vijand2Y, 110, 110);
   //3
   image(img, vijand3X, vijand3Y, 110, 110);
+  //4
+  image(img, vijand4X, vijand4Y, 110, 110);
 
   // munt
+  //1
   image(imgmunt, muntX, muntY, 120, 120);
+  //2
   image(imgmunt, munt2X, munt2Y, 120, 120);
+  //3
+  image(imgmunt, munt3X, munt3Y, 120, 120);
 
   // speler
   image(imgbird, spelerX - 98, spelerY - 65, 200, 200);
@@ -172,16 +185,16 @@ var tekenAlles = function() {
  * anders return false
  */
 var checkGameOver = function() {
-  if (spelerX - vijandX < 60 &&
-    vijandX - spelerX < 60 &&
+  if (spelerX - vijandX < 80 &&
+    vijandX - spelerX < 80 &&
     spelerY - vijandY < 80 &&
     vijandY - spelerY < 80) {
     aantal = aantal + 1;
     console.log("botsing" + aantal)
     return true;
   }
-  if (spelerX - vijand2X < 60 &&
-    vijand2X - spelerX < 60 &&
+  if (spelerX - vijand2X < 80 &&
+    vijand2X - spelerX < 80 &&
     spelerY - vijand2Y < 80 &&
     vijand2Y - spelerY < 80) {
     aantal = aantal + 1;
@@ -189,10 +202,19 @@ var checkGameOver = function() {
     return true;
   }
 
-  if (spelerX - vijand3X < 60 &&
-    vijand3X - spelerX < 60 &&
+  if (spelerX - vijand3X < 80 &&
+    vijand3X - spelerX < 80 &&
     spelerY - vijand3Y < 80 &&
     vijand3Y - spelerY < 80) {
+    aantal = aantal + 1;
+    console.log("botsing" + aantal)
+    return true;
+  }
+
+  if (spelerX - vijand4X < 80 &&
+    vijand4X - spelerX < 80 &&
+    spelerY - vijand4Y < 80 &&
+    vijand4Y - spelerY < 80) {
     aantal = aantal + 1;
     console.log("botsing" + aantal)
     return true;
@@ -220,6 +242,16 @@ var checkGameOver = function() {
     return false;
   }
 
+  if (spelerX - munt3X < 60 &&
+    munt3X - spelerX < 60 &&
+    spelerY - munt3Y < 80 &&
+    munt3Y - spelerY < 80) {
+    coins = coins + 1;
+    munt3X = 1000;
+    munt3Y = 1000;
+    console.log("botsing" + coins)
+    return false;
+  }
   
   
   // check of HP 0 is , of tijd op is, of ...
