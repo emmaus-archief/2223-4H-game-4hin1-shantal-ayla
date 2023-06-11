@@ -119,7 +119,15 @@ var tekenAlles = function() {
   image(imgachter, 0, 0, 1280, 720);
 
   // wolk
-  image(imgwolk, wolkX, wolkY, 200, 200);
+  
+  for (var i = 0; i < 12; i++) {
+    image(imgwolk, i*wolkX, wolkY, 300, 200);
+  }
+
+  for (var i = 0; i < 12; i++) {
+    image(imgwolk, i*wolkX - 300, wolkY + 100, 300, 200);
+    wolkX = wolkX + 0.01;
+  }
 
   // vijand bom
   image(img, vijandX, vijandY, 110, 110);
@@ -168,6 +176,28 @@ var checkGameOver = function() {
     aantal = aantal + 1;
     console.log("botsing" + aantal)
     return true;
+  }
+
+  if (spelerX - muntX < 60 &&
+    muntX - spelerX < 60 &&
+    spelerY - muntY < 80 &&
+    muntY - spelerY < 80) {
+    coins = coins + 1;
+    muntX = 1000;
+    muntY = 1000;
+    console.log("botsing" + coins)
+    return false;
+  }
+
+  if (spelerX - munt2X < 60 &&
+    munt2X - spelerX < 60 &&
+    spelerY - munt2Y < 80 &&
+    munt2Y - spelerY < 80) {
+    coins = coins + 1;
+    munt2X = 1000;
+    munt2Y = 1000;
+    console.log("botsing" + coins)
+    return false;
   }
   
   // check of HP 0 is , of tijd op is, of ...
