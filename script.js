@@ -20,6 +20,7 @@ var aantal = 0;
 
 const SPELEN = 1;
 const GAMEOVER = 2;
+const GAMEKLAAR = 3;
 const UITLEG = 8;
 var spelStatus = UITLEG;
 
@@ -44,6 +45,8 @@ var munt2X = 900; // x-positie van munt
 var munt2Y = 410; // y-positie van munt
 var wolkX = 600; // x-positie van wolk
 var wolkY = 100; // y-positie van wolk
+var vlagX = 1100; // x-positie van vlag
+var vlagY = 550; // y-positie van vlag
 
 var score = 0;// tijd
 var coins = 0;// aantal punten
@@ -60,6 +63,8 @@ var imgmunt; //plaatje
 var imgwolk; //plaatje
 var imggameover; //plaatje
 var imguitleg; //plaatje
+var imgvlag; //plaatje
+var imgklaar; //plaatje
 
 
 /* ********************************************* */
@@ -119,7 +124,6 @@ var tekenAlles = function() {
   image(imgachter, 0, 0, 1280, 720);
 
   // wolk
-  
   for (var i = 0; i < 12; i++) {
     image(imgwolk, i*wolkX, wolkY, 300, 200);
   }
@@ -154,6 +158,9 @@ var tekenAlles = function() {
   textSize(50);
   fill('white');
   text("coins:" +coins, 1000, 53,);
+
+  // vlag
+  image(imgvlag, vlagX, vlagY, 150, 150);
 };
 
 /**
@@ -199,11 +206,23 @@ var checkGameOver = function() {
     console.log("botsing" + coins)
     return false;
   }
+
+  
   
   // check of HP 0 is , of tijd op is, of ...
   return false;
 };
 
+var checkGameKlaar = function() {
+  if (spelerX - vlagX < 60 &&
+    vlagX - spelerX < 60 &&
+    spelerY - vlagY < 80 &&
+    vlagY - spelerY < 80) {
+    aantal = aantal + 1;
+    console.log("botsing" + aantal)
+    return true;
+  }
+};
 /* ********************************************* */
 /* setup() en draw() functies / hoofdprogramma   */
 /* ********************************************* */
@@ -222,6 +241,8 @@ function preload() {
  imgachter = loadImage('bg2.webp');
  imggameover = loadImage('gameover2.png');
  imguitleg = loadImage('flappybirdj3png.png');
+ imgvlag = loadImage('finish.png');
+ imgklaar = loadImage('klaar.png');
 
 }
 
@@ -252,6 +273,25 @@ function draw() {
       spelStatus = GAMEOVER;
     }
     console.log("spelen");
+  }
+  
+  if (spelStatus === SPELEN) {
+    beweegAlles();
+    verwerkBotsing();
+    tekenAlles();
+    if (checkGameKlaar()) {
+      spelStatus = GAMEKLAAR;
+    }
+    console.log("spelen");
+  }
+
+  if (spelStatus === GAMEKLAAR) {
+    // teken game-over scherm
+    console.log("game over");
+    image(imgklaar, 0, 0, 1280, 720);
+    if (keyIsDown(32)) { //spatie
+      spelStatus = UITLEG;
+    }
   }
 
   if (spelStatus === GAMEOVER) {
