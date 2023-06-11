@@ -36,9 +36,11 @@ var spelerY = 410; // y-positie van speler
 var spelerY = vloerY;
 
 var vijandX = 350; // x-positie van vijand
-var vijandY = 410; // y-positie van vijand
+var vijandY = 100; // y-positie van vijand
 var vijand2X = 800; // x-positie van vijand2
 var vijand2Y = 190; // y-positie van vijand2
+var vijand3X = 200; // x-positie van vijand2
+var vijand3Y = 600; // y-positie van vijand2
 var muntX = 600; // x-positie van munt
 var muntY = 190; // y-positie van munt
 var munt2X = 900; // x-positie van munt
@@ -134,10 +136,12 @@ var tekenAlles = function() {
   }
 
   // vijand bom
+  //1
   image(img, vijandX, vijandY, 110, 110);
-
-  // vijand 2
+  //2
   image(img, vijand2X, vijand2Y, 110, 110);
+  //3
+  image(img, vijand3X, vijand3Y, 110, 110);
 
   // munt
   image(imgmunt, muntX, muntY, 120, 120);
@@ -180,6 +184,15 @@ var checkGameOver = function() {
     vijand2X - spelerX < 60 &&
     spelerY - vijand2Y < 80 &&
     vijand2Y - spelerY < 80) {
+    aantal = aantal + 1;
+    console.log("botsing" + aantal)
+    return true;
+  }
+
+  if (spelerX - vijand3X < 60 &&
+    vijand3X - spelerX < 60 &&
+    spelerY - vijand3Y < 80 &&
+    vijand3Y - spelerY < 80) {
     aantal = aantal + 1;
     console.log("botsing" + aantal)
     return true;
