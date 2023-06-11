@@ -45,7 +45,8 @@ var munt2Y = 410; // y-positie van munt
 var wolkX = 600; // x-positie van wolk
 var wolkY = 100; // y-positie van wolk
 
-var score = 0; // aantal punten
+var score = 0;// tijd
+var coins = 0;// aantal punten
 
 var spelerSpringt = false;
 var springSnelheid = 0;
@@ -88,7 +89,7 @@ var beweegAlles = function() {
   if (spelerY > 610) {
     spelerSpringt = false;
   }
-  
+
   // vijand
 
   
@@ -105,15 +106,7 @@ var verwerkBotsing = function() {
   // botsing kogel tegen vijand
 
   // update punten en health
-function addPoints(points){
-  score = 0;
-}
-  function displayScore(){
-    console.log("Score:" + score);
-  }
-  //Voorbeeldgebruik:
-  addPoints(1);
-  displayScore(0);
+
 };
 
 /**
@@ -141,7 +134,18 @@ var tekenAlles = function() {
   // speler
   image(imgbird, spelerX - 98, spelerY - 65, 200, 200);
   // punten en health
-  text(score, 600,100);
+  setInterval (function(){
+    score++;
+    console.log(score);
+  }, 10000);
+  textSize(50);
+  fill('white');
+  text("Tijd:" +score, 100, 53,);
+
+  //leven
+  textSize(50);
+  fill('white');
+  text("coins:" +coins, 1000, 53,);
 };
 
 /**
@@ -149,18 +153,18 @@ var tekenAlles = function() {
  * anders return false
  */
 var checkGameOver = function() {
-  if (spelerX - vijandX < 50 &&
-    vijandX - spelerX < 50 &&
-    spelerY - vijandY < 50 &&
-    vijandY - spelerY < 50) {
+  if (spelerX - vijandX < 60 &&
+    vijandX - spelerX < 60 &&
+    spelerY - vijandY < 80 &&
+    vijandY - spelerY < 80) {
     aantal = aantal + 1;
     console.log("botsing" + aantal)
     return true;
   }
-  if (spelerX - vijand2X < 48 &&
-    vijand2X - spelerX < 48 &&
-    spelerY - vijand2Y < 150 &&
-    vijand2Y - spelerY < 150) {
+  if (spelerX - vijand2X < 60 &&
+    vijand2X - spelerX < 60 &&
+    spelerY - vijand2Y < 80 &&
+    vijand2Y - spelerY < 80) {
     aantal = aantal + 1;
     console.log("botsing" + aantal)
     return true;
