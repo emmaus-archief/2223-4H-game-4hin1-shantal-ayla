@@ -163,15 +163,12 @@ var tekenAlles = function() {
   // speler
   image(imgbird, spelerX - 98, spelerY - 65, 200, 200);
   // punten en health
-  setInterval (function(){
-    score++;
-    console.log(score);
-  }, 10000);
   textSize(50);
   fill('white');
   text("Tijd:" +score, 100, 53,);
 
   //leven
+  score = score + 1;
   textSize(50);
   fill('white');
   text("coins:" +coins, 1000, 53,);
@@ -363,6 +360,7 @@ function draw() {
       munt3X = 400; // x-positie van munt 3
       munt3Y = 510; // y-positie van munt 3
       coins = 0;
+      score = 0;
       spelStatus = SPELEN;
     }
   }
