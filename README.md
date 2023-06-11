@@ -28,10 +28,8 @@ stappenplan
 3. omgeving maken
 4. speler desgin
 5. extra bewegingen (rollen, springen etc.)
-6. punten + levens
-7. fruit (power up)
-8. extra hindernissen
-9. vijanden tekenen
-10. extra leven pakken (bonus)
-11. 
-hele mooie extra stap
+6. botsing
+7. achtergrond
+8. gameoverscherm maken
+9. uitleg scherm maken
+10. punten + levens
